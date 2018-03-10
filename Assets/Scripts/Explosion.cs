@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Explosion : NetworkBehaviour {
+public class Explosion : NetworkBehaviour
+{
     public float power = 1.0f;
     public float radius = 5.0f;
     public float upForce = 1.0f;
-	// Use this for initialization
-	void Start () {
+
+    void Start()
+    {
         RpcDetonate();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
 
     [ClientRpc]
@@ -30,11 +33,11 @@ public class Explosion : NetworkBehaviour {
             Rigidbody rib = hit.GetComponent<Rigidbody>();
             if (rib != null)
             {
-                //realistic explosion
-                 //rib.AddExplosionForce(power, explosionPosition, radius, upForce, ForceMode.Impulse);
+                //more realistic explosion
+                //rib.AddExplosionForce(power, explosionPosition, radius, upForce, ForceMode.Impulse);
 
-                //gameplay favored explosion type (along fireball vector)
-                rib.AddForce(gameObject.transform.forward * power , ForceMode.Impulse);
+                //gameplay (mechanic) favored explosion type (along fireball vector)
+                rib.AddForce(gameObject.transform.forward * power, ForceMode.Impulse);
             }
 
         }

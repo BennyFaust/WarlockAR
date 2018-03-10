@@ -29,10 +29,11 @@ public class Firemover : NetworkBehaviour
     void Update()
     {
         float x = Mathf.Repeat(Time.time * scrollSpeed, 1);
-        Vector2 offset = new Vector2(x,  savedOffset.y);
+        Vector2 offset = new Vector2(x, savedOffset.y);
         m_Material.SetTextureOffset("_MKGlowTex", offset);
         timer++;
-        if (timer > 360){
+        if (timer > 360)
+        {
             Destroy(gameObject);
         }
     }
@@ -41,7 +42,7 @@ public class Firemover : NetworkBehaviour
         if (timer > 10)
         {
             CmdExplode(transform.position, transform.rotation);
-           //not networked yet
+            //not networked yet
             //Instantiate(explosion, transform.position, transform.rotation);
             //Detonate();
             //Destroy(gameObject);
@@ -49,7 +50,8 @@ public class Firemover : NetworkBehaviour
     }
 
     [Command]
-    void CmdExplode(Vector3 position, Quaternion rotation){
+    void CmdExplode(Vector3 position, Quaternion rotation)
+    {
         var myexplosion = (GameObject)Instantiate(
     explosion,
     position,
@@ -65,7 +67,7 @@ public class Firemover : NetworkBehaviour
     //    Vector3 explosionPosition = transform.position;
     //    Collider[] colliders = Physics.OverlapSphere(explosionPosition, radius);
     //    foreach(Collider hit in colliders){
-            
+
     //        Rigidbody rib = hit.GetComponent<Rigidbody>();
     //        if (rib != null)
     //        {

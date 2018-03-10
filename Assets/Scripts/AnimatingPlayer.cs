@@ -10,11 +10,6 @@ public class AnimatingPlayer : MonoBehaviour {
 	void Start () {
         anim = GetComponentInChildren<Animator>();
 	}
-	
-
-	void Update () {
-		
-	}
 
     void Animating()
     {
